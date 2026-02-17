@@ -1,42 +1,36 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Class Website</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECE 595 – Autonomous Mobile Robots</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="container">
-    <h1>Your Name</h1>
-    <p>Class website for COURSE ### — updated weekly.</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="updates.html">Weekly Updates</a>
-    </nav>
-  </header>
 
-  <main class="container card">
-    <h2>About</h2>
-    <p>
-      Write 3–5 sentences about the project/class, what you’re learning, and what this site will track.
-    </p>
+<header class="container">
+  <h1>ECE 595 – Autonomous Mobile Robots</h1>
+  <h2>Benjamin Webster & Kevin Tran</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="updates.html">Weekly Updates</a>
+  </nav>
+</header>
 
-    <h2>This Week</h2>
-    <ul>
-      <li>What you worked on</li>
-      <li>What you learned</li>
-      <li>What’s next</li>
-    </ul>
-  </main>
+<main class="container card">
+  <p>
+    This project focuses on developing a vision-based autonomous tracking system for a UAV capable of maintaining a constant distance from a moving ground target using machine learning and control integration through ROS.
+  </p>
+</main>
 
-  <footer class="container footer">
-    <small>Last updated: <span id="last-updated"></span></small>
-  </footer>
+<footer class="container footer">
+  <small>Last updated: <span id="last-updated"></span></small>
+</footer>
 
-  <script>
-    document.getElementById("last-updated").textContent =
-      new Date(document.lastModified).toLocaleDateString();
-  </script>
+<script>
+  document.getElementById("last-updated").textContent =
+    new Date(document.lastModified).toLocaleDateString();
+</script>
+
 </body>
 </html>

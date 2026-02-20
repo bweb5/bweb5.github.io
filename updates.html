@@ -32,7 +32,7 @@
   <p>
     During this week we finalized, submitted, and received approval for our project proposal.
     The proposal outlines the development of a vision-based autonomous UAV tracking system
-    integrating machine learning perception with ROS based control architecture.
+    integrating machine learning perception with a ROS-based control architecture.
   </p>
 
   <p>
@@ -45,7 +45,26 @@
     </a>
   </p>
 
+  <h3>Simulation Progress (MuJoCo)</h3>
+  <ul>
+    <li>Built an initial MuJoCo simulation scene containing a UAV body, a moving ground platform, and a high-contrast marker.</li>
+    <li>Implemented a top-down “look-down” camera view using a Python-controlled MuJoCo camera (stable across MuJoCo versions).</li>
+    <li>Added basic marker detection using grayscale thresholding and contour detection.</li>
+    <li>Computed pixel error between the marker centroid and the image center, and mapped that error to simple planar command signals (not yet applied to UAV motion).</li>
+    <li>Validated real-time rendering and confirmed the moving platform and marker are consistently visible in the camera view.</li>
+  </ul>
+
+  <h3>Video Demo</h3>
+  <p>
+    Short demo of the MuJoCo look-down camera view with marker detection overlay:
+  </p>
+
+  <video controls width="900" style="max-width: 100%; border-radius: 10px;">
+    <source src="assets/week5_sim_demo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </article>
+
 <hr />
 
 <article>

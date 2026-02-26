@@ -69,6 +69,49 @@
 
 <article>
   <h2>Week 6 — 02/22–02/28</h2>
+
+  <p>
+    This week upgraded the perception pipeline to use HSV based color segmentation for more reliable red marker detection. We also transitioned from just
+    visualizing commands to actually applying them to the UAV inside the simulation.
+  </p>
+
+  <h3>Simulation Progress (MuJoCo)</h3>
+  <ul>
+    <li>Implemented HSV color segmentation for red marker detection.</li>
+    <li>Logged tracking error and command signals for analysis.</li>
+    <li>Computed pixel error (e<sub>u</sub>, e<sub>v</sub>) between marker centroid and image center.</li>
+    <li>Applied command signals to the UAV free joint in MuJoCo.</li>
+    <li>Implemented a locked midpoint camera view for clearer demos.</li>
+  </ul>
+
+
+  <h3>Hardware Selection</h3>
+  <p>
+    We finalized the UAV platform we plan to use for a real-world demo if
+    deployment is feasible.
+  </p>
+
+  <div style="text-align:center; margin-top:15px;">
+    <img src="assets/drone_platform.jpg"
+         alt="Selected UAV Platform"
+         style="max-width:400px; width:100%; border-radius:8px;">
+    <p><small>Selected UAV platform for potential hardware deployment.</small></p>
+  </div>
+
+  <h3>Project Proposal</h3>
+  <p>
+    <a href="assets/ECE595_Project_Proposal.pdf" target="_blank">
+      View Project Proposal (PDF)
+    </a>
+  </p>
+
+  <h3>Video Demo</h3>
+  <p>
+    <a href="assets/mujoco_demo.mp4" target="_blank">
+      View Closed-Loop Tracking Demo
+    </a>
+  </p>
+
 </article>
 
 <hr />

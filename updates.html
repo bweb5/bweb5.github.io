@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -112,7 +112,21 @@
 <hr />
 
 <article>
-  <h2>Week 7 — 03/01–03/07</h2>
+  <h2>Week 7 &mdash; 03/01&ndash;03/07</h2>
+
+  <p>
+    This week we moved the project from basic marker detection toward a more complete tracking loop.
+    The goal was to make the simulation show a clear relationship between camera error and UAV motion.
+  </p>
+
+  <h3>Controller and Simulation Work</h3>
+  <ul>
+    <li>Added a fixed external camera view for debugging the UAV and platform positions.</li>
+    <li>Detected both the red platform marker and the blue UAV marker in the external camera image.</li>
+    <li>Computed relative image error between the platform and UAV centroids.</li>
+    <li>Used the image error to generate planar command signals for the UAV.</li>
+    <li>Continued logging image error, command output, and separation distance for later analysis.</li>
+  </ul>
 </article>
 
 <hr />
@@ -145,20 +159,47 @@
 <hr />
 
 <article>
-  <h2>Week 11 — 03/29–04/04</h2>
+  <h2>Week 11 &mdash; 03/29&ndash;04/04</h2>
 
-    <p>
-    This week we spent time finding and selecting a paper for our class presentation. 
-    We looked through different options and chose one that relates to our project 
-    and overall topic of autonomous tracking and control.
+  <p>
+    This week we spent time finding and selecting a paper for our class presentation.
+    We looked through different options and chose one that relates to our project
+    and the broader topic of autonomous tracking and control.
   </p>
-  
+
+  <p>
+    Selected paper:
+    <a href="applsci-09-04552.pdf" target="_blank">
+      View selected paper (PDF)
+    </a>
+  </p>
+
 </article>
 
 <hr />
 
 <article>
-  <h2>Week 12 — 04/05–04/11</h2>
+  <h2>Week 12 &mdash; 04/05&ndash;04/11</h2>
+
+  <p>
+    This week we reorganized the simulation into a clearer baseline system that can later be adapted for hardware.
+    The simulation now separates perception, controller logic, MuJoCo interfacing, shared messages, and logging.
+  </p>
+
+  <h3>Baseline Visual Servo Controller</h3>
+  <ul>
+    <li>Implemented a proportional image-based visual servo controller using image error e<sub>x</sub> and e<sub>v</sub>.</li>
+    <li>Converted filtered pixel error into planar velocity commands v<sub>x</sub> and v<sub>y</sub>.</li>
+    <li>Defined a reusable velocity command output that can later map to a real UAV interface.</li>
+  </ul>
+
+  <h3>Simulation Updates</h3>
+  <ul>
+    <li>Added named MuJoCo cameras for the fixed external view and onboard downward UAV view.</li>
+    <li>Attached the onboard camera underneath the UAV body to better represent a real downward-facing camera.</li>
+    <li>Improved the marker geometry so the target remains visible from the camera views.</li>
+    <li>Verified both external-camera tracking and onboard-camera tracking in headless simulation runs.</li>
+  </ul>
 </article>
 
 <hr />

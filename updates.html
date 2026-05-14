@@ -11,8 +11,8 @@
 <header class="container">
   <h1>Weekly Project Updates</h1>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="updates.html">Weekly Updates</a>
+    <a href="../../../Users/benwe/Downloads/index.html">Home</a>
+    <a href="../../../Users/benwe/Downloads/updates.html">Weekly Updates</a>
   </nav>
 </header>
 
@@ -214,7 +214,7 @@
   </p>
 
   <video controls width="900" style="max-width: 100%; border-radius: 10px;">
-    <source src="assets/week12_sim_demo.mp4" type="video/mp4">
+    <source src="../../../Users/benwe/Downloads/assets/week12_sim_demo.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
@@ -225,7 +225,15 @@
 <article>
   <h2>Week 13 — 04/12–04/18</h2>
   <p>
-    This week we spent time reading and preparing the presntation of the paper, no work was done
+    Most of this week was spent reading the paper and preparing the presentation, so progress on the project itself was limited.
+    We still spent some time reviewing the controller structure and briefly tested a simple PID version of the image-based controller,
+    but the results were not clearly better than the simpler proportional IBVS baseline. Because of that, we kept the proportional controller
+    as the main controller for the rest of the simulation work.
+  </p>
+
+  <p>
+    In short, this week was more about regrouping after the presentation and deciding to keep the project centered on a working simulation
+    rather than trying to force a more complicated controller without enough tuning time.
   </p>
 </article>
 
@@ -233,12 +241,186 @@
 
 <article>
   <h2>Week 14 — 04/19–04/25</h2>
+
+  <p>
+    This week we started benchmarking the current IBVS simulation under different motion conditions.
+    The main goal was to see how the same controller reacts when the platform moves slowly, quickly,
+    or leaves the frame, instead of only testing one ideal circular path.
+  </p>
+
+  <h3>Scenario Testing</h3>
+  <ul>
+    <li>Kept the proportional image-based visual servo controller as the baseline.</li>
+    <li>Recorded separate external-view and onboard-camera videos for each test case.</li>
+    <li>Started comparing how target speed and visibility affect tracking error and stability.</li>
+  </ul>
+
+  <h3>Baseline Circular Motion</h3>
+  <p>
+    This is the standard tracking case used as the reference behavior for the later scenario tests.
+  </p>
+  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+    <div style="max-width:420px; width:100%;">
+      <p><strong>External View</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_0_baseline_external.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="max-width:420px; width:100%;">
+      <p><strong>Onboard Drone Camera</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_0_baseline_drone.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <h3>Slow Platform Motion</h3>
+  <p>
+    We slowed the platform down to observe the controller in a less demanding case and use that as a reference for the faster tests.
+  </p>
+  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+    <div style="max-width:420px; width:100%;">
+      <p><strong>External View</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_1_slow_external.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="max-width:420px; width:100%;">
+      <p><strong>Onboard Drone Camera</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_1_slow_drone.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <h3>Fast Platform Motion</h3>
+  <p>
+    We increased the platform speed to see when the same controller starts lagging behind the target more noticeably.
+  </p>
+  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+    <div style="max-width:420px; width:100%;">
+      <p><strong>External View</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_2_fast_external.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="max-width:420px; width:100%;">
+      <p><strong>Onboard Drone Camera</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_2_fast_drone.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <h3>Zoom / Sweep Test</h3>
+  <p>
+    In this test the platform sweeps across the scene quickly, which lets us observe what happens when the target moves out of frame
+    or is only visible for a short amount of time.
+  </p>
+  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+    <div style="max-width:420px; width:100%;">
+      <p><strong>External View</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_3_zoom_external.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="max-width:420px; width:100%;">
+      <p><strong>Onboard Drone Camera</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_3_zoom_drone.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 </article>
 
 <hr />
 
 <article>
   <h2>Week 15 — 04/26–05/02</h2>
+
+  <p>
+    This week we extended the scenario testing to include clutter and target ambiguity.
+    The goal was to see how a simple color-based IBVS system behaves when there are multiple red platforms in the scene instead of one clean target.
+  </p>
+
+  <h3>Clutter and Ambiguity Tests</h3>
+  <ul>
+    <li>Added static clutter with multiple red platforms in view.</li>
+    <li>Tested a case where two targets start together and then separate.</li>
+    <li>Added a moving-clutter case to make the detection problem less idealized.</li>
+  </ul>
+
+  <h3>Static Clutter</h3>
+  <p>
+    This test keeps the main platform motion similar to the baseline, but introduces extra red platforms nearby to see how much visual clutter affects the tracker.
+  </p>
+  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+    <div style="max-width:420px; width:100%;">
+      <p><strong>External View</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_4_clutter_external.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="max-width:420px; width:100%;">
+      <p><strong>Onboard Drone Camera</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_4_clutter_drone.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <h3>Breakaway Test</h3>
+  <p>
+    In this case two platforms begin close together with the drone already on top, then separate so we can observe which target the detector and controller follow.
+  </p>
+  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+    <div style="max-width:420px; width:100%;">
+      <p><strong>External View</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_5_breakaway_external.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="max-width:420px; width:100%;">
+      <p><strong>Onboard Drone Camera</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_5_breakaway_drone.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <h3>Moving Clutter</h3>
+  <p>
+    This is the most cluttered case so far, with several moving red platforms in the scene.
+    It gives us a better sense of how fragile the current color-based target selection can be.
+  </p>
+  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+    <div style="max-width:420px; width:100%;">
+      <p><strong>External View</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_6_clutter_moving_external.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="max-width:420px; width:100%;">
+      <p><strong>Onboard Drone Camera</strong></p>
+      <video controls width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos/scenario_6_clutter_moving_drone.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 </article>
 
 <hr />
@@ -246,7 +428,15 @@
 <article>
   <h2>Week 16 — 05/03–05/09</h2>
   <p>
-    The start of finals week , no work was done.
+    Around this week we also spent time trying to connect the simulation work back to the hardware direction of the project.
+    This mostly meant reviewing the drone platform, flight stack, and what command interface would be needed if we wanted to move from simulation
+    to a real system. We did not complete a hardware deployment, but we were able to keep the simulation code organized around a simple command output
+    so that it could later be mapped to a real drone interface.
+  </p>
+
+  <p>
+    Finals week also limited how much deeper we could go, so the main result here was keeping the software work simulation-focused while still
+    thinking through how it would translate to hardware later.
   </p>
 </article>
 

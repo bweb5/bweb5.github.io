@@ -182,30 +182,25 @@
   <h2>Week 12 &mdash; 04/05&ndash;04/11</h2>
 
   <p>
-    This week we reorganized the simulation into a clearer baseline system that can later be adapted for hardware.
-    The simulation now separates perception, controller logic, MuJoCo interfacing, shared messages, and logging.
+    This week we focused on improving and fine tuning the actual tracking behavior in simulation.
+    The goal was to get the UAV to consistently follow the moving platform using the onboard camera and a simple IBVS controller,
+    without adding yaw into the loop yet.
   </p>
 
-  <h3>Baseline Visual Servo Controller</h3>
+  <h3>IBVS Tracking Improvements</h3>
   <ul>
-    <li>Implemented a proportional image-based visual servo controller using image error e<sub>x</sub> and e<sub>v</sub>.</li>
-    <li>Converted filtered pixel error into planar velocity commands v<sub>x</sub> and v<sub>y</sub>.</li>
-    <li>Defined a reusable velocity command output that can later map to a real UAV interface.</li>
+    <li>Improved the proportional image-based visual servo controller using image error e<sub>x</sub> and e<sub>v</sub>.</li>
+    <li>Fine tuned the image-to-motion mapping so the UAV would track the platform more reliably instead of drifting away.</li>
+    <li>Kept the controller simple by using planar velocity commands v<sub>x</sub> and v<sub>y</sub> with fixed altitude.</li>
+    <li>Verified that the onboard downward camera could be used as the main tracking view.</li>
   </ul>
 
   <h3>Simulation Updates</h3>
   <ul>
     <li>Added named MuJoCo cameras for the fixed external view and onboard downward UAV view.</li>
     <li>Attached the onboard camera underneath the UAV body to better represent a real downward-facing camera.</li>
-    <li>Improved the marker geometry so the target remains visible from the camera views.</li>
-    <li>Verified both external-camera tracking and onboard-camera tracking in headless simulation runs.</li>
-  </ul>
-
-  <h3>Hardware Updates</h3>
-  <ul>
-    <li>Did more research into the MindRacer 210mm Racing Drone and the flight stack.</li>
-    <li>Downloaded the necessary tools for programming the drone and ground station.</li>
-    <li>We are using the MindRacer mainboard and are looking into a compnaion computer setup for our computer vision tasks (Raspberry Pi)</li>
+    <li>Improved the target visibility and controller tuning until the drone tracked the platform well in the baseline case.</li>
+    <li>At this stage the controller did not yet use yaw; yaw was added later as a separate simulation improvement.</li>
   </ul>
 
   <h3>Video Demo</h3>
@@ -214,7 +209,7 @@
   </p>
 
   <video controls width="900" style="max-width: 100%; border-radius: 10px;">
-    <source src="/assets/week12_sim_demo.mp4" type="video/mp4">
+    <source src="assets/week12_sim_demo.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
@@ -262,15 +257,15 @@
   <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
     <div style="max-width:420px; width:100%;">
       <p><strong>External View</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_0_baseline_external.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_0_baseline_external.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_0_baseline_external.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_0_baseline_external.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
     <div style="max-width:420px; width:100%;">
       <p><strong>Onboard Drone Camera</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_0_baseline_drone.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_0_baseline_drone.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_0_baseline_drone.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_0_baseline_drone.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
@@ -283,15 +278,15 @@
   <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
     <div style="max-width:420px; width:100%;">
       <p><strong>External View</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_1_slow_external.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_1_slow_external.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_1_slow_external.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_1_slow_external.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
     <div style="max-width:420px; width:100%;">
       <p><strong>Onboard Drone Camera</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_1_slow_drone.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_1_slow_drone.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_1_slow_drone.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_1_slow_drone.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
@@ -304,15 +299,15 @@
   <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
     <div style="max-width:420px; width:100%;">
       <p><strong>External View</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_2_fast_external.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_2_fast_external.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_2_fast_external.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_2_fast_external.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
     <div style="max-width:420px; width:100%;">
       <p><strong>Onboard Drone Camera</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_2_fast_drone.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_2_fast_drone.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_2_fast_drone.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_2_fast_drone.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
@@ -326,15 +321,15 @@
   <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
     <div style="max-width:420px; width:100%;">
       <p><strong>External View</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_3_zoom_external.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_3_zoom_external.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_3_zoom_external.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_3_zoom_external.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
     <div style="max-width:420px; width:100%;">
       <p><strong>Onboard Drone Camera</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_3_zoom_drone.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_3_zoom_drone.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_3_zoom_drone.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_3_zoom_drone.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
@@ -351,11 +346,25 @@
     The goal was to see how a simple color-based IBVS system behaves when there are multiple red platforms in the scene instead of one clean target.
   </p>
 
+  <p>
+    We also spent time setting up the physical drone hardware path. We were able to get the camera feed and Raspberry Pi side working well enough
+    to support the same kind of visual tracking pipeline, but we still needed a clean way to push control commands through the drone electronics.
+  </p>
+
+  <div style="text-align:center; margin:18px 0;">
+    <img src="assets/drone sourced.jpg"
+         alt="Physical drone used for hardware setup"
+         onerror="if(!this.dataset.f1){this.dataset.f1='1';this.src='assets/drone sourced.png';}else if(!this.dataset.f2){this.dataset.f2='1';this.src='assets/drone sourced.jpeg';}else if(!this.dataset.f3){this.dataset.f3='1';this.src='assets/drone sourced.webp';}else{this.style.display='none';}"
+         style="max-width:440px; width:100%; border-radius:8px;">
+    <p><small>Physical drone platform used during the hardware setup attempt.</small></p>
+  </div>
+
   <h3>Clutter and Ambiguity Tests</h3>
   <ul>
     <li>Added static clutter with multiple red platforms in view.</li>
     <li>Tested a case where two targets start together and then separate.</li>
     <li>Added a moving-clutter case to make the detection problem less idealized.</li>
+    <li>In parallel, tested camera and Raspberry Pi setup for moving the visual tracking pipeline closer to real hardware.</li>
   </ul>
 
   <h3>Static Clutter</h3>
@@ -365,15 +374,15 @@
   <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
     <div style="max-width:420px; width:100%;">
       <p><strong>External View</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_4_clutter_external.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_4_clutter_external.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_4_clutter_external.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_4_clutter_external.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
     <div style="max-width:420px; width:100%;">
       <p><strong>Onboard Drone Camera</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_4_clutter_drone.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_4_clutter_drone.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_4_clutter_drone.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_4_clutter_drone.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
@@ -386,15 +395,15 @@
   <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
     <div style="max-width:420px; width:100%;">
       <p><strong>External View</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_5_breakaway_external.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_5_breakaway_external.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_5_breakaway_external.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_5_breakaway_external.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
     <div style="max-width:420px; width:100%;">
       <p><strong>Onboard Drone Camera</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_5_breakaway_drone.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_5_breakaway_drone.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_5_breakaway_drone.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_5_breakaway_drone.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
@@ -408,15 +417,15 @@
   <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
     <div style="max-width:420px; width:100%;">
       <p><strong>External View</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_6_clutter_moving_external.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_6_clutter_moving_external.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_6_clutter_moving_external.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_6_clutter_moving_external.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
     <div style="max-width:420px; width:100%;">
       <p><strong>Onboard Drone Camera</strong></p>
-      <video controls preload="none" playsinline poster="videos/posters/scenario_6_clutter_moving_drone.png" width="420" style="max-width:100%; border-radius:10px;">
-        <source src="videos_web/scenario_6_clutter_moving_drone.mp4" type="video/mp4">
+      <video controls preload="none" playsinline poster="videos_posters2/scenario_6_clutter_moving_drone.png" width="420" style="max-width:100%; border-radius:10px;">
+        <source src="videos_web2/scenario_6_clutter_moving_drone.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
@@ -428,15 +437,19 @@
 <article>
   <h2>Week 16 — 05/03–05/09</h2>
   <p>
-    Around this week we also spent time trying to connect the simulation work back to the hardware direction of the project.
-    This mostly meant reviewing the drone platform, flight stack, and what command interface would be needed if we wanted to move from simulation
-    to a real system. We did not complete a hardware deployment, but we were able to keep the simulation code organized around a simple command output
-    so that it could later be mapped to a real drone interface.
+    This week we continued trying to connect the simulation work back to the hardware direction of the project.
+    We were able to get the visual tracking side working with the camera and Raspberry Pi, but we were not able to properly use the drone's
+    embedded microcontroller to send the control commands we wanted.
   </p>
 
   <p>
-    Finals week also limited how much deeper we could go, so the main result here was keeping the software work simulation-focused while still
-    thinking through how it would translate to hardware later.
+    The main issue was that the microcontroller and flight electronics were too embedded for us to cleanly port over the command path in the time we had left.
+    Because of that, we kept the project centered on simulation, where we could still evaluate tracking behavior, controller outputs, and different failure cases.
+  </p>
+
+  <p>
+    Later in the simulation work we also added a simple yaw state so the UAV heading looked more realistic, but the main tracking controller remained the
+    same proportional IBVS baseline.
   </p>
 </article>
 

@@ -451,6 +451,19 @@
     Later in the simulation work we also added a simple yaw state so the UAV heading looked more realistic, but the main tracking controller remained the
     same proportional IBVS baseline.
   </p>
+
+  <h3>Controller Notes</h3>
+  <p>
+    In the onboard camera view we compute image error from the red marker relative to the center of the frame. The horizontal error is
+    e<sub>x</sub> and the vertical error is e<sub>v</sub>. If the target appears lower in the image, then e<sub>v</sub> is positive,
+    and because image coordinates increase downward while the simulation world y-axis increases upward, that produces a negative y command.
+  </p>
+
+  <p>
+    Later, when yaw was added, we kept the same IBVS controller and only added a simple heading calculation underneath it. The drone first computes
+    a desired motion direction from the planar command, then computes a desired yaw from that direction using atan2(v<sub>y</sub>, v<sub>x</sub>).
+    The yaw error is the difference between that desired yaw and the current UAV yaw, and the yaw rate is just a clipped proportional response to that error.
+  </p>
 </article>
 
 <hr />

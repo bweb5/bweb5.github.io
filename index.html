@@ -3,189 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ECE 595 - Autonomous Mobile Robots</title>
+  <title>ECE 595 – Autonomous Mobile Robots</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    :root {
-      --bg: #f5f7f8;
-      --card: #ffffff;
-      --text: #1f2933;
-      --muted: #5f6c7b;
-      --line: #d7dee5;
-      --accent: #1f7a8c;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-    }
-
-    .container {
-      width: min(980px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    header {
-      padding: 30px 0 20px;
-    }
-
-    h1, h2, h3 {
-      margin: 0 0 12px;
-      line-height: 1.15;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 4vw, 3rem);
-    }
-
-    header h2 {
-      color: var(--muted);
-      font-size: 1.15rem;
-      font-weight: normal;
-      margin-bottom: 18px;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    nav a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 22px;
-      margin-bottom: 18px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .pill {
-      background: #e8f1f4;
-      color: #144b55;
-      border: 1px solid #cfe0e5;
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 0.95rem;
-    }
-
-    .link-list a {
-      color: var(--accent);
-    }
-
-    .footer {
-      padding: 8px 0 30px;
-      color: var(--muted);
-    }
-
-    @media (max-width: 760px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
 
 <header class="container">
-  <h1>ECE 595 - Autonomous Mobile Robots</h1>
+  <h1>ECE 595 – Autonomous Mobile Robots</h1>
   <h2>Benjamin Webster & Kevin Tran</h2>
   <nav>
     <a href="index.html">Home</a>
     <a href="updates.html">Weekly Updates</a>
-    <a href="final project.html">Final Project</a>
   </nav>
 </header>
 
-<main class="container">
+<main class="container card">
 
-  <section class="card">
-    <h2>Vision-Based UAV Tracking</h2>
+  <section>
+    <h2>Vision Based Tracking UAV</h2>
     <p>
-      This project developed a vision-based UAV tracking simulation in MuJoCo using a downward-facing camera,
-      color-based target detection, and image-based visual servoing. Instead of controlling the drone from known
-      world coordinates, we used image error from the camera frame to generate planar velocity commands and keep
-      the UAV over a moving platform.
+      This project focuses on developing a vision-based autonomous tracking system for a UAV capable of maintaining a constant distance from a moving ground target using machine learning and ROS-based control integration.
     </p>
-    <p>
-      The final system focused on a proportional IBVS baseline with an onboard camera view, an external debug view,
-      scenario testing under fast motion and clutter, and a hardware-oriented command structure that could later
-      connect to a real drone interface.
-    </p>
-    <div class="pill-row">
-      <div class="pill">MuJoCo simulation</div>
-      <div class="pill">Downward camera</div>
-      <div class="pill">HSV marker detection</div>
-      <div class="pill">IBVS control</div>
-      <div class="pill">Scenario testing</div>
-      <div class="pill">Hardware attempt</div>
-    </div>
   </section>
 
-  <section class="grid">
-    <div class="card">
-      <h2>What We Did</h2>
-      <p>
-        We built a simulated UAV and moving platform, detected a red target marker from camera images,
-        computed image error <code>e_x</code> and <code>e_v</code>, and mapped that error into planar
-        velocity commands with a simple proportional IBVS controller.
-      </p>
-      <p class="muted">
-        We also tested the controller under slow, fast, dropout, breakaway, and cluttered scenarios
-        to understand how well the baseline holds up.
-      </p>
+  <!--
+  <section>
+    <h2>System Architecture</h2>
+    <div class="architecture">
+      <div class="box"></div>
     </div>
-
-    <div class="card">
-      <h2>Where To Look</h2>
-      <div class="link-list">
-        <p>
-          <a href="updates.html">Weekly Updates</a><br>
-          Progress timeline, scenario videos, and hardware notes.
-        </p>
-        <p>
-          <a href="final project.html">Final Project</a><br>
-          Overview of the controller, results, problems we ran into, and next steps for hardware.
-        </p>
-        <p>
-          <a href="https://github.com/bweb5/ece595-uav-tracking" target="_blank">
-            github.com/bweb5/ece595-uav-tracking
-          </a><br>
-          Project source code and documentation.
-        </p>
-      </div>
-    </div>
+  </section>
+-->
+  <section>
+    <h2>Repository</h2>
+    <p>
+      Project source code and documentation:
+      <br>
+      <a href="https://github.com/bweb5/ece595-uav-tracking" target="_blank">
+        github.com/bweb5/ece595-uav-tracking
+      </a>
+    </p>
   </section>
 
 </main>
